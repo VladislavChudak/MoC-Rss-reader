@@ -1,0 +1,22 @@
+<p>Number of Channels: {{ calcChannelNumber() }}</p>
+<p>Number of Authors: {{ calcAuthorNumber() }} </p>
+<div>
+    <h4>Selected Message</h4>
+    <div class="message__content" *ngIf="isSelected else noSelected">
+        <p> {{ _dataService.selectedMessage?.title }} </p>
+        <span> {{ _dataService.selectedMessage?.description }} </span>
+        <div class="chart">
+          <canvas baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"
+            [options]="pieChartOptions"
+            [legend]="false">
+          </canvas>
+        </div>
+    </div> 
+
+
+
+    <ng-template #noSelected>The message is not selected</ng-template>
+</div>

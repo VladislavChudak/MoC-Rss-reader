@@ -1,0 +1,35 @@
+<div class="channel-management">
+    <h1 class="channel-management__title">Select a channel</h1>
+    <mat-form-field class="channel-management__select">
+        <mat-label>Select a channel</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let channel of channels" [value]="channel.channelURL" (click)="getURL(channel.channelURL)">
+            {{ channel.channelName }}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <form class="channel-management__form"
+        method="post"
+        [formGroup]="channelControl"
+        (ngSubmit)=onSubmit()
+    >
+        <p>Add a new RRS-channel</p>
+        <mat-form-field class="channel-management__input">
+            <input matInput
+                #channelName
+                placeholder="Channel Name" 
+                formControlName="channelName" 
+                value
+            >
+        </mat-form-field>
+        <mat-form-field class="channel-management__input">
+            <input matInput
+                #channelURL
+                placeholder="Channel URL" 
+                formControlName="channelURL"
+                value>
+        </mat-form-field>
+
+        <input type="submit" (click)="channelURL.value = ''; channelName.value = '';">
+    </form>
+</div>
