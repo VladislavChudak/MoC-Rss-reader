@@ -8,7 +8,7 @@ export class StorageService {
   constructor() { }
 
   getItems(key) {
-    return JSON.parse(localStorage.getItem(key))
+    return JSON.parse(localStorage.getItem(key));
   }
 
   setItems(key, channels) {

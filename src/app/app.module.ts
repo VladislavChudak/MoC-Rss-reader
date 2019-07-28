@@ -21,13 +21,15 @@ import { FeedComponent } from './feed/feed.component';
 
 import { DataService } from './services/data.service';
 import { StorageService } from './services/storage.service';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChannelsComponent,
     FeedComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

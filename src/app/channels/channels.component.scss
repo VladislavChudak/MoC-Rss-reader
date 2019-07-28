@@ -1,12 +1,36 @@
-.channel-management {
-    width: 300px;
-}
-
 .channel-management__form {
     display: flex;
     flex-direction: column;
 }
 
-.channel-management__input {
+.channel-management {
+    text-align: center;
+    width: 350px;
+    margin: 0 auto;
+}
+
+.channel-management__title {
+    font-weight: 500;
     width: 300px;
+    margin: 20px auto;   
+}
+
+.channel-management__required {
+    color: #ff0000;
+}
+
+.channel-management__select {
+    width: 100%;
+}
+
+.channel-management__submit {
+    background: #b58acd;
+    border: 1px solid black;
+    border-radius: 16px; 
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    height: 50px;
+    margin: 10px auto;
+    width: 180px;
 }

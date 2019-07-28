@@ -1,0 +1,36 @@
+.statistics {
+    width: 350px;
+    margin: 0 auto;
+}
+
+.statistics__title {
+    text-align: center;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.message__heading {
+    text-align: center;
+    font-weight: 500;
+}
+
+.message__not-selected {
+    width: 300px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.message__chart {
+    margin-bottom: 10px;
+}
+
+.message__chart-title {
+    text-align: center;
+}
+
+.message__link,
+.message__link:focus,
+.message__link:visited,
+.message__link:active, {
+    color: #b58acd;
+}

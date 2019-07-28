@@ -1,7 +1,7 @@
 <div class="channel-management">
-    <h1 class="channel-management__title">Select a channel</h1>
+    <p class="channel-management__title">Select an RSS feed</p>
     <mat-form-field class="channel-management__select">
-        <mat-label>Select a channel</mat-label>
+        <mat-label>What would you like to read today?</mat-label>
         <mat-select>
           <mat-option *ngFor="let channel of channels" [value]="channel.channelURL" (click)="getURL(channel.channelURL)">
             {{ channel.channelName }}
@@ -13,7 +13,9 @@
         [formGroup]="channelControl"
         (ngSubmit)=onSubmit()
     >
-        <p>Add a new RRS-channel</p>
+        <p class="channel-management__title">Or add a new one using the form below 
+            <span class="channel-management__required">Both fields are required</span>
+        </p>
         <mat-form-field class="channel-management__input">
             <input matInput
                 #channelName
@@ -29,7 +31,10 @@
                 formControlName="channelURL"
                 value>
         </mat-form-field>
-
-        <input type="submit" (click)="channelURL.value = ''; channelName.value = '';">
+        <input class="channel-management__submit" 
+            type="submit" 
+            (click)="channelURL.value = ''; channelName.value = '';" 
+            value="Add Feed"
+        >
     </form>
 </div>

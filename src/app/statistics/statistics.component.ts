@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { StorageService } from '../services/storage.service';
-import { ChartType, ChartOptions } from 'chart.js';
+import { ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
 
 const removeSpecialCharacters = /[&\/\\#,+()$~%.'":*?<>{}\s]/g;
@@ -15,14 +15,16 @@ export class StatisticsComponent implements OnInit {
   public pieChartLabels: Label[];
   public pieChartData: number[];
   public pieChartType: ChartType = 'pie';
-  public isSelected = this.onMessageSelect();
+  public isSelected = false;
+  public selectedMessage: object;
 
   constructor(
     private _dataService: DataService,
     private _storageService: StorageService
-    ) { }
+  ) { }
 
   ngOnInit() {
+    this._dataService.selectedMessage.subscribe(selectedMessage => this.onMessageSelect(selectedMessage));
   }
 
   calcChannelNumber() {
@@ -40,15 +42,11 @@ export class StatisticsComponent implements OnInit {
     }
   }
 
-  onMessageSelect() {
-    const selectedMessage = this._dataService.selectedMessage;
-
-    if (typeof selectedMessage !== "undefined") {
-      this.transformStringToChartValues(selectedMessage);
-      
-      this._storageService.setItems("selectedMessage", selectedMessage);
-      
-    } 
+  onMessageSelect(selectedMessage) {
+    this.transformStringToChartValues(selectedMessage);
+    this._storageService.setItems("selectedMessage", selectedMessage); 
+    this.selectedMessage = selectedMessage;
+    this.isSelected = true;
   }
 
   calcCharOccurances(selectedMessage) {

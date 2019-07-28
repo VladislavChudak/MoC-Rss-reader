@@ -1,22 +1,37 @@
-<p>Number of Channels: {{ calcChannelNumber() }}</p>
-<p>Number of Authors: {{ calcAuthorNumber() }} </p>
-<div>
-    <h4>Selected Message</h4>
-    <div class="message__content" *ngIf="isSelected else noSelected">
-        <p> {{ _dataService.selectedMessage?.title }} </p>
-        <span> {{ _dataService.selectedMessage?.description }} </span>
-        <div class="chart">
-          <canvas baseChart
-            [data]="pieChartData"
-            [labels]="pieChartLabels"
-            [chartType]="pieChartType"
-            [options]="pieChartOptions"
-            [legend]="false">
-          </canvas>
-        </div>
-    </div> 
-
-
-
-    <ng-template #noSelected>The message is not selected</ng-template>
+<div class="statistics">
+  <h3 class="statistics__title">Statistics</h3>
+  <p class="statistics__channels">Number of Channels: {{ calcChannelNumber() }}</p>
+  <p class="statistics__authors">Number of Authors: {{ calcAuthorNumber() }} </p>
+  <div class="statistics__message">
+    <h4 class="message__heading">Selected Message</h4>
+      <mat-card class="message__content" *ngIf="isSelected else noSelected">
+          <mat-card-header>
+              <mat-card-title class="message__title">
+                  {{ selectedMessage?.title }}
+              </mat-card-title>
+              <mat-card-subtitle class="message__subtitle"> 
+                  {{ selectedMessage?.pubDate | date: 'medium' }} {{ selectedMessage?.author }}
+              </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="message__description">
+              {{ selectedMessage?.description }}
+              <a class="message__link" href="{{ selectedMessage?.link }}" target="_blank">Go to source</a>
+          </mat-card-content>
+          <mat-card-footer class="message__chart">
+            <p class="message__chart-title">Message statistics down below</p>
+              <div class="chart">
+                <canvas baseChart
+                  [data]="pieChartData"
+                  [labels]="pieChartLabels"
+                  [chartType]="pieChartType"
+                  [options]="pieChartOptions"
+                  [legend]="false">
+                </canvas>
+              </div>
+          </mat-card-footer>
+      </mat-card> 
+      <ng-template #noSelected>
+        <p class="message__not-selected">The message is currently not selected. Please, select one first!</p>
+      </ng-template>
+  </div>
 </div>

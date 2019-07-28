@@ -1,27 +1,21 @@
-<div *ngIf="isSelected() else noSelected">
+<div class="feed" *ngIf="isSelected() else noSelected">
     <mat-card class="feed__item" *ngFor="let item of feedList" (click)="getSelectedMessage(item)">
         <mat-card-header>
-            <mat-card-title>
+            <mat-card-title class="feed__title">
                 {{ item.title }}
             </mat-card-title>
-
-            <mat-card-subtitle> 
+            <mat-card-subtitle class="feed__subtitle"> 
                 {{ item.pubDate | date: 'medium' }} {{ item.author }}
             </mat-card-subtitle>
         </mat-card-header>
-
-        
         <mat-card-content>
             {{ item.description }}
+            <a class="feed__link" href="{{ item.link }}" target="_blank">Go to source</a>
         </mat-card-content>
-
-        <mat-card-footer>
-            <a href="{{ item.link }}" target="_blank">Go to source</a>
-        </mat-card-footer>
     </mat-card>
 </div>
 
 <ng-template #noSelected >
-    No Selected
+    <p class="feed__not-selected">No Selected</p>
 </ng-template>
   

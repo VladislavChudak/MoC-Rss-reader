@@ -8,7 +8,7 @@ import { StorageService } from '../services/storage.service';
   styleUrls: ['./feed.component.scss']
 })
 export class FeedComponent implements OnInit {
-  feedList: [];
+  public feedList: [];
 
   constructor(
     private _dataService: DataService,
@@ -30,7 +30,7 @@ export class FeedComponent implements OnInit {
     const storagedItems: object = this._storageService.getItems("currentFeed");
 
     if (typeof feed !== "undefined") {
-      this._storageService.setItems("currentFeed", feed)
+      this._storageService.setItems("currentFeed", feed);
 
       return this.feedList = feed["items"];
     }
@@ -41,7 +41,7 @@ export class FeedComponent implements OnInit {
   }
 
   getSelectedMessage(message: object) {
-    this._dataService.getMessage(message);
+    this._dataService.selectedMessage.next(message);
   }
 
 }

@@ -18,9 +18,9 @@ interface Channel {
   styleUrls: ['./channels.component.scss']
 })
 export class ChannelsComponent implements OnInit {
-  urlPattern = /^(http|https):\/\/[^ "]+$/;
-  channelControl: FormGroup;
-  channels: Channel[] = [
+  public urlPattern = /^(http|https):\/\/[^ "]+$/;
+  public channelControl: FormGroup;
+  public channels: Channel[] = [
     {
       channelName: "RssFeed", 
       channelURL: "http://feeds.bbci.co.uk/news/business/rss.xml"
@@ -50,7 +50,7 @@ export class ChannelsComponent implements OnInit {
 
   formCreate() {
     this.channelControl = new FormGroup({
-      channelName: new FormControl(),
+      channelName: new FormControl('', Validators.required),
       channelURL: new FormControl('', [
         Validators.required,
         Validators.pattern(this.urlPattern)

@@ -1,0 +1,17 @@
+@media (min-width: 1024px) {
+    .controls-container {
+        position: fixed;
+        top: 10%;
+        left: 3%;
+    }
+}
+
+@media (min-width: 1240px) {
+    .controls-container {
+        position: static;
+        top: auto;
+        left: auto;
+        margin: 1% 0 0 3%;
+        float: left;
+    }
+}
